@@ -1,0 +1,18 @@
+# Configuration files with sensitive data
+config.php
+connection.php
+
+# User uploaded content
+admin/user/*
+!admin/user/index.html
+
+# Temporary files
+*.tmp
+*.log
+
+# Environment files
+.env
+
+# IDE specific files
+.vscode/
+.idea/
