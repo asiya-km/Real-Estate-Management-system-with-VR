@@ -1,0 +1,145 @@
+<?php 
+	session_start();
+	include("config.php");
+	$error="";
+
+	if(isset($_POST['login']))
+	{
+		$user = mysqli_real_escape_string($con, $_REQUEST['user']);
+		$pass = mysqli_real_escape_string($con, $_REQUEST['pass']);		
+        $utype = filter_input(INPUT_POST, 'utype', FILTER_SANITIZE_STRING);
+		$email = mysqli_real_escape_string($con, $_REQUEST['email']);
+	
+		if(!empty($user) && !empty($pass) && !empty($utype))
+		{
+			// Use prepared statements to prevent SQL injection
+			if($utype == 'admin') {
+				$sql = "SELECT * FROM admin WHERE auser=? AND apass=?";
+				$stmt = mysqli_prepare($con, $sql);
+				mysqli_stmt_bind_param($stmt, "ss", $user, $pass);
+			} else {
+				$sql = "SELECT * FROM user WHERE (uemail=? OR uname=?) AND upass=? AND utype=?";
+				$stmt = mysqli_prepare($con, $sql);
+				mysqli_stmt_bind_param($stmt, "ssss", $user, $user, $pass, $utype);
+			}
+			
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+            
+			if($row = mysqli_fetch_assoc($result))
+			{
+				switch($utype)
+				{
+					case 'admin':
+				        $_SESSION['auser'] = $user;
+				        header("Location: admin/dashboard.php");
+				        break;
+				   
+				    case 'manager':
+						$_SESSION['uemail'] = $row['uemail'];
+						$_SESSION['auser'] = $user;
+						
+					    header("Location: manager/dashboard.php");
+					    break;
+					
+                    case 'user':
+						$_SESSION['uid'] = $row['uid'];
+				        $_SESSION['uemail'] = $row['uemail'];
+				        header("location:index.php");                       
+                        break;
+					
+                    default:
+                        header("Location: login1.php?error=invalid_role");	
+			    }
+			}
+			else
+			{
+				$error = '* Invalid User Name and Password';
+			}
+		} else {
+			$error = "* Please Fill all the Fields!";
+		}
+	}   
+?>
+<html>
+    <head>
+        <title>form</title>
+        <style >
+             body{
+                    margin:0;
+                    padding:0;                 
+                    font-family:san-sarif;
+                    background-color:rgb(179, 233, 233);
+                }
+                .box{
+                    width:100px;
+                    padding:60px;
+                    color:white;
+                    background-image: url('images/bradcromb.jpg');
+                    margin:150px auto;
+                    border:40px solid #04fb6b;
+                   text-align:center;   
+                 border-radius:10em;
+                 box-shadow:5px 5px 5px 50px;
+                 animation:animateBg 4s linear infinite;
+                    
+                }
+                .box input[type="text"]{
+                width:180px;
+                height: 40px;
+                    color:rgb(238, 14, 14);
+                    font-size: larger;
+                    }
+                    .box input[type="password"]{
+                    width:150px;
+                    color:black;
+                    height: 35px;
+                    font-size: larger;
+                    }
+                 
+                a{
+                    width: 100px;
+                    height: 50px;
+                    background-color: #04fb6b;
+                    color: rgb(250, 245, 245);
+                    border: none;
+                    border-radius: 35px;
+                    cursor: pointer;
+                }
+                input[type="submit"] {
+                    width: 60px;
+                    height: 30px;
+                    background-color: #04fb6b;
+                    color: rgb(255, 255, 255);
+                    border: none;
+                    border-radius: 35px;
+                    cursor: pointer;
+                    font-size: larger;
+                    
+                }
+                @keyframes animateBg{
+                    100%{
+                        filter:hue-rotate(360deg);
+                    }
+                }
+        </style>
+        
+    </head>
+    <body>
+<form>
+<fieldset class="box">
+<legend style="color:black"> <marquee><h2>LOGIN</h2> </marquee>   </legend>
+
+ <input type="text" name="" required placeholder ="User name"><br/><br>
+
+<input type="password" name="" required placeholder ="password"><br><br>
+<label>User</label> <input type="radio" name="radio" required value="user">
+<label>Manager</label><input type="radio" name="radio" required value="manager">
+<label>Admin</label><input type="radio" name="radio" required value="admin">
+<br>
+<input type="submit" value="Login"/><br>
+<h3><a href="sign up.html">Sign up</a></h3>
+</fieldset>
+</form>
+</body>
+</html>

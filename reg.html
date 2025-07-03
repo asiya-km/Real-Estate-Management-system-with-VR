@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: rgb(33, 39, 116);
+        }
+        .box {
+            width: 100px;
+            padding: 44px;
+            color: white;
+            background-image: url('remis.jpg');
+            margin: 150px auto;
+            border: 16px solid #04fb6b;
+            text-align: center;
+            border-radius: 10em;
+            box-shadow: 2px 2px 3px 29px;
+            animation: animateBg 3s linear infinite;
+        }
+        .box input[type="text"],
+        .box input[type="email"],
+        .box input[type="password"],
+        .box input[type="tel"],
+        .box input[type="confirm password"] {
+            width: 160px;
+            height: 29px;
+            margin: 3px 0;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding-left: 15px;
+        }
+        .box input[type="text"] {
+            color: rgb(0, 123, 255);
+        }
+        .box input[type="email"] {
+            color: rgb(238, 14, 14);
+        }
+        .box input[type="password"] {
+            color: black;
+        }
+        .box input[type="submit"] {
+            width: 100px;
+            height: 30px;
+            background-color: #04fb6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        a{
+            width: 100px;
+            height: 30px;
+            background-color: #04fb6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        }
+        .box input[type="submit"]:hover {
+            background-color: #03da5a;
+        }
+        @keyframes animateBg {
+            25% {
+                filter: hue-rotate(360deg);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset class="box">
+            <marquee><legend id="sign">SIGN UP</legend></marquee>
+            <input type="text" name="name" placeholder="Full Name" required /><br /><br>
+            <input type="email" name="email" placeholder="Email" required /><br /><br>
+            <input type="tel" id="phone" name="phone" placeholder="Phone number" required pattern="[+]{0,1}[0-9]{10,15}" 
+            title="Please enter a valid phone number (10-15 digits). For international numbers, start with a '+'."/>
+            <input type="hidden" id="full_phone" name="full_phone">
+            <input type="password" name="password" placeholder="Password" required /><br /><br />
+            <input type="confirm password" name="password" placeholder="Confirm Password" required /><br /><br />
+            <input type="submit" value="Sign Up" /><br><br>
+            <a href="log.html">Log in</a>
+        </fieldset>
+    </form>
+    <div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+        <script>
+            // Initialize intl-tel-input
+            const phoneInput = document.querySelector("#phone");
+            const fullPhoneInput = document.querySelector("#full_phone");
+        
+            const iti = window.intlTelInput(phoneInput, {
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                separateDialCode: true,
+                preferredCountries: ['us', 'gb', 'in'], // Default preferred countries
+                initialCountry: "auto", // Auto-detect user's country
+                geoIpLookup: function(callback) {
+                    fetch("https://ipapi.co/json")
+                        .then(response => response.json())
+                        .then(data => callback(data.country_code))
+                        .catch(() => callback("us")); // Fallback to US if IP lookup fails
+                }
+            });
+        
+            // Update hidden input with full phone number (including country code)
+            phoneInput.addEventListener("input", function() {
+                if (iti.isValidNumber()) {
+                    fullPhoneInput.value = iti.getNumber();
+                } else {
+                    fullPhoneInput.value = "";
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

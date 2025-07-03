@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>form</title>
+        <style >
+             body{
+                    margin:0;
+                    padding:0;                 font-family:san-sarif;
+                    background-color:rgb(10, 2, 20);
+                }
+                .box{
+                    width:100px;
+                    padding:60px;
+                    color:white;
+                    background-image: url('rem.jpg');
+                    margin:150px auto;
+                    border:20px solid #04fb6b;
+         text-align:center;   
+                 border-radius:10em;
+                 box-shadow:5px 5px 5px 50px;
+                 animation:animateBg 2s linear infinite;
+                    
+                }
+                .box input[type="email"]{
+                width:150px;
+                height: 35px;
+                    color:rgb(238, 14, 14);
+                    }
+                    .box input[type="password"]{
+                    width:150px;
+                    color:black;
+                    height: 35px;
+                    }
+                     @keyframes animateBg{
+                    25%{
+                        filter:hue-rotate(360deg);
+                    }
+                }
+                a{
+                    width: 100px;
+                    height: 35px;
+                    background-color: #04fb6b;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                input[type="submit"] {
+                    width: 100px;
+                    height: 30px;
+                    background-color: #04fb6b;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+        </style>
+        
+    </head>
+    <body>
+<form>
+<fieldset class="box">
+    <marquee><legend>LOGIN</legend></marquee>
+
+ <input type="email" name="" placeholder ="email"><br/><br>
+
+<input type="password" name="" required placeholder ="password"><br><br>
+<input type="submit" value="login"/><br><br>
+<a href="reg.html">Sign up</a>
+</fieldset>
+</form>
+</body>
+</html>

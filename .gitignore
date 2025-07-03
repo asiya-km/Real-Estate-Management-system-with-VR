@@ -1,18 +1,43 @@
-# Configuration files with sensitive data
-config.php
-connection.php
-
-# User uploaded content
-admin/user/*
-!admin/user/index.html
-
-# Temporary files
-*.tmp
+# Sensitive files
+client_secret_*.json
 *.log
+chapa_log.txt
+chapa_verify_debug.log
+DATABASE FILE/
+*.sql
 
-# Environment files
-.env
+# User uploads
+uploads/
+admin/upload/
+manager/upload/
+admin/property/
+manager/property/
 
-# IDE specific files
-.vscode/
+# System files
+*.bak
+*.backup
+*.tmp
+*.swp
+
+# Node and npm
+remsko-real-estate/node_modules/
+remsko-real-estate/.env
+
+# PHPStorm/VSCode/IDE
 .idea/
+.vscode/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Other
+.env
+.env.*
+
+# Exclude compiled or cache files
+*.cache
+*.class
+*.pyc
+
+# Exclude any other private or sensitive files
