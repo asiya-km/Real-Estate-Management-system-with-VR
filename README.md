@@ -52,7 +52,7 @@ Remsko offers a cutting-edge VR experience for property viewing. Users can:
    ```
 2. **Configure your web server** to serve the `/remsko` directory.
 3. **Import the database**
-   - Use `/DATABASE FILE/rems.sql` or `realestatephp.sql` to set up your database.
+   - Use `/DB FILE/rems.sql` to set up your database.
 4. **Update configuration files**
    - Set database credentials and API keys as needed in your PHP config files.
 5. **Install frontend dependencies** (optional, for React app):
