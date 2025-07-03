@@ -1,7 +1,7 @@
-# Remsko Real Estate Management System
+# Real Estate Management System
 
 ## Overview
-Remsko is a robust, full-featured real estate management platform designed to streamline property listings, bookings, payments, and user management for agencies, agents, and clients. The system supports both traditional and modern real estate workflows, including advanced features like VR-enabled property tours.
+This project is a robust, full-featured real estate management platform designed to streamline property listings, bookings, payments, and user management. The system supports both traditional and modern real estate workflows, including advanced features like VR-enabled property tours.
 
 ## Key Features
 - **Property Listings & Details**: Manage and showcase properties with rich details and images.
@@ -52,7 +52,7 @@ Remsko offers a cutting-edge VR experience for property viewing. Users can:
    ```
 2. **Configure your web server** to serve the `/remsko` directory.
 3. **Import the database**
-   - Use `/DATABASE FILE/rems.sql` or `realestatephp.sql` to set up your database.
+   - Use `/DB FILE/rems.sql` to set up your database.
 4. **Update configuration files**
    - Set database credentials and API keys as needed in your PHP config files.
 5. **Install frontend dependencies** (optional, for React app):
@@ -64,7 +64,7 @@ Remsko offers a cutting-edge VR experience for property viewing. Users can:
 6. **Access the application** via your browser (e.g., http://localhost/remsko)
 
 ## Usage
-- Log in as an admin, manager, agent, or user.
+- Log in as an admin, manager, or user.
 - Add, edit, or browse property listings.
 - Schedule and manage property visits.
 - Experience VR property tours from supported listings.
