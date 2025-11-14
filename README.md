@@ -70,15 +70,6 @@ Remsko offers a cutting-edge VR experience for property viewing. Users can:
 - Experience VR property tours from supported listings.
 - Process payments and manage bookings.
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request. For major changes, open an issue first to discuss your ideas.
-
-## License
-This project is open source. See the LICENSE file for details.
-
-## Documentation & Support
-- See `project_documentation.md` and `appendix.md` for detailed technical and user documentation.
-- For help, open an issue or contact the project maintainer.
 
 ---
 **Remsko** – Modern Real Estate Management, VR-Ready. 
