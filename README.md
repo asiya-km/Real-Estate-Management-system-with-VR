@@ -46,7 +46,7 @@ Remsko offers a cutting-edge VR experience for property viewing. Users can:
 ### Property Details Page
 <img width="1279" height="564" alt="image" src="https://github.com/user-attachments/assets/bd0235ae-d269-4c90-9100-cb1b4b78c6d1" />
 
-### Map View / VR Tour
+### Map View & VR Tour
 <img width="1280" height="567" alt="image" src="https://github.com/user-attachments/assets/e54d3a6c-3dfc-46e5-83a8-7d936e806bc7" />
 
 ## Getting Started
